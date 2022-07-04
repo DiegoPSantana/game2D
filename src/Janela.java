@@ -8,10 +8,11 @@ public class Janela {
         janela.setResizable(false);
         janela.setLocationRelativeTo(null);
 
-        janela.setVisible(true);
 
         Canvas canvas = new Canvas();
         janela.add(canvas);
+
+        janela.setVisible(true);
 
     }
 }
