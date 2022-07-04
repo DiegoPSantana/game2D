@@ -9,7 +9,18 @@ public class Robo {
    private int runAtual;
    private int timer;
 
+   // Tamanho do Robo
+   private int largura, altura;
+
+   // Posição do Robo
+    private int posX, posY;
+
     public Robo(){
+        largura = 200;
+        altura = 200;
+
+        posX = 300;
+        posY = 300;
 
         timer = 0;
 
@@ -40,6 +51,8 @@ public class Robo {
     }
 
     public void pintar(Graphics2D g){
-        g.drawImage(roboRun[runAtual], 100, 5, null);
+        g.drawImage(roboRun[runAtual], posX, posY, posX + largura, posY + altura, 0, 0,
+                roboRun[runAtual].getWidth(), roboRun[runAtual].getHeight(),
+                null);
     }
 }
