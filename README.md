@@ -37,3 +37,16 @@ executada, onde atualiza o movimento, desenhando, limpando e rodando em 60fps.
 <h1 align="center">
 <img src="img/test-movimento.gif">
 </h1>
+
+<h2 align="center">
+Movimento robo Correndo
+</h2>
+
+<p>
+Criaremos classe Robo aonde será testado o movimento de correr controlando sua velocidade com o
+atributo timer.
+</p>
+
+<h1 align="center">
+<img src="img/correndo.gif">
+</h1>
