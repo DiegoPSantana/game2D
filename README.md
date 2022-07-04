@@ -23,3 +23,17 @@ Para testar iremos desenhar um quadrado azul, imagine como se fosse nosso primei
 <h1 align="center">
 <img src="img/quadrado.gif">
 </h1>
+
+
+<h2 align="center">
+Testando movimento
+</h2>
+
+<p>
+Para fazer o teste de game loop, aqui foi feito a nossa Thread, não sendo uma coisa apenas 
+executada, onde atualiza o movimento, desenhando, limpando e rodando em 60fps.
+</p>
+
+<h1 align="center">
+<img src="img/test-movimento.gif">
+</h1>
