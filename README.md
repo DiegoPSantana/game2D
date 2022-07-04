@@ -12,3 +12,14 @@ tamanho da largura e altura.
 </h1>
 
 
+<h2 align="center">
+Desenhando
+</h2>
+
+<p>
+Para testar iremos desenhar um quadrado azul, imagine como se fosse nosso primeiro personagem.
+</p>
+
+<h1 align="center">
+<img src="img/quadrado.gif">
+</h1>
