@@ -9,5 +9,9 @@ public class Janela {
         janela.setLocationRelativeTo(null);
 
         janela.setVisible(true);
+
+        Canvas canvas = new Canvas();
+        janela.add(canvas);
+
     }
 }
