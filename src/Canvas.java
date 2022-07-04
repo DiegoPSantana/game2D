@@ -8,13 +8,14 @@ public class Canvas extends JPanel implements Runnable {
         gameLoop.start();
     }
 
-    int x;
 
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        g.setColor(Color.BLUE);
-        g.fillRect(x, 50, 100, 100);
+
+        // Background
+        g.setColor(Color.white);
+        g.fillRect(0, 0, 800, 600);
     }
 
     @Override
@@ -27,7 +28,6 @@ public class Canvas extends JPanel implements Runnable {
     }
 
     private void update() {
-        x++;
     }
 
     private void dorme(){
