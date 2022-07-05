@@ -2,11 +2,15 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.nio.Buffer;
 
 public class Robo {
 
    private BufferedImage roboRun[];
    private int runAtual;
+
+   private BufferedImage roboIdle[];
+   private int idleAtual;
    private int timer;
 
    // Tamanho do Robo
@@ -29,8 +33,13 @@ public class Robo {
 
         timer = 0;
 
+        ultimaDirecao = 1;
+
         roboRun = new BufferedImage[8];
         runAtual = 0;
+
+        roboIdle = new BufferedImage[10];
+        idleAtual = 0;
 
 
         try{
@@ -39,18 +48,29 @@ public class Robo {
                 roboRun[i] = ImageIO.read(new File(run));
                 System.out.println("Imagens run " + run + " carregadas !");
             }
+
+            // Robo movimento idle
+            for(int i = 0; i < 10; i++){
+                String idle = "sprites/Idle ("+(i + 1)+").png";
+                roboIdle[i] = ImageIO.read(new File(idle));
+                System.out.println("Imagens idle "+ idle + " carregadas !");
+            }
         }catch (Exception e){
-            System.out.println("Imagens Run não carregadas ");
+            System.out.println(" Error ao carregar imagens " + e);
         }
 
     }
     public void atualizar(){
 
+        // Mudanças das sprites
         timer++;
         if(timer >= 4){
             runAtual++;
-            if(runAtual == 8){
+            idleAtual++;
+            // Run atual e idle atual ao chegar nas suas sprites finais irá começar do zero
+            if(runAtual == 8 || idleAtual == 10){
                 runAtual = 0;
+                idleAtual = 0;
             }
             timer = 0;
         }
@@ -67,13 +87,24 @@ public class Robo {
 
     public void pintar(Graphics2D g){
         if(ultimaDirecao == 1){
-            g.drawImage(roboRun[runAtual], posX, posY, posX + largura, posY + altura, 0, 0,
-                    roboRun[runAtual].getWidth(), roboRun[runAtual].getHeight(),
-                    null);
+
+            if(direcao == 0){
+                g.drawImage(roboIdle[idleAtual], posX, posY, posX + largura, posY + altura, 0, 0,
+                        roboIdle[idleAtual].getWidth(), roboIdle[idleAtual].getHeight(), null);
+            } else{
+                g.drawImage(roboRun[runAtual], posX, posY, posX + largura, posY + altura, 0, 0,
+                        roboRun[runAtual].getWidth(), roboRun[runAtual].getHeight(),
+                        null);
+            }
         } else if(ultimaDirecao == -1){
-            g.drawImage(roboRun[runAtual], posX, posY, posX + largura, posY + altura,
-                    roboRun[runAtual].getWidth(),0, 0, roboRun[runAtual].getHeight(),
-                    null);
+            if(direcao == 0) {
+                g.drawImage(roboIdle[idleAtual], posX, posY, posX + largura, posY + altura,
+                        roboIdle[idleAtual].getWidth(), 0, 0,roboIdle[idleAtual].getHeight(), null);
+            } else {
+                g.drawImage(roboRun[runAtual], posX, posY, posX + largura, posY + altura,
+                        roboRun[runAtual].getWidth(), 0, 0, roboRun[runAtual].getHeight(),
+                        null);
+            }
         }
 
     }
