@@ -12,6 +12,8 @@ public class Janela {
         Canvas canvas = new Canvas();
         janela.add(canvas);
 
+        janela.addKeyListener(canvas);
+
         janela.setVisible(true);
 
     }
