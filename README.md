@@ -50,3 +50,17 @@ atributo timer.
 <h1 align="center">
 <img src="img/correndo.gif">
 </h1>
+
+
+<h2 align="center">
+Correndo para direita e esquerda
+</h2>
+
+<p>
+Iremos implementar os métodos do Keylistener, para sim usar a tecla de ação, para o robo se deslocar 
+do lugar
+</p>
+
+<h1 align="center">
+<img src="img/correndo-direita-esquerda.gif">
+</h1>
