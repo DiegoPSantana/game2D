@@ -64,3 +64,16 @@ do lugar
 <h1 align="center">
 <img src="img/correndo-direita-esquerda.gif">
 </h1>
+
+<h2 align="center">
+Movimento Idle
+</h2>
+
+<p>
+Agora iremos criar o movimento dele parado(idle), quando o personagem parar, tanto para direita como 
+para esquerda ele irar exibir sequências de sprites Idle.
+</p>
+
+<h1 align="center">
+<img src="img/idle-direita-esquerda.gif">
+</h1>
