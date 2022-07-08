@@ -68,6 +68,8 @@ public class Canvas extends JPanel implements Runnable, KeyListener {
 
         } else if(e.getKeyCode() == KeyEvent.VK_A){
             robo.setDirecao(-1);
+        } else if(e.getKeyCode() == KeyEvent.VK_SPACE){
+            robo.iniciaPulo();
         }
     }
 
