@@ -77,3 +77,15 @@ para esquerda ele irar exibir sequências de sprites Idle.
 <h1 align="center">
 <img src="img/idle-direita-esquerda.gif">
 </h1>
+
+<h2 align="center">
+Movimento Pulo 
+</h2>
+
+<p>
+Nesta parte iremos adicionar a parte do pulo do personagem, tanto para esquerda como para direita.
+</p>
+
+<h1 align="center">
+<img src="img/jump-direita-esquerda.gif">
+</h1>
