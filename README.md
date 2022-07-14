@@ -89,3 +89,17 @@ Nesta parte iremos adicionar a parte do pulo do personagem, tanto para esquerda 
 <h1 align="center">
 <img src="img/jump-direita-esquerda.gif">
 </h1>
+
+
+<h2 align="center">
+Movimento descansando 
+</h2>
+
+<p>
+Aqui iremos fazer com que o personagem robo descanse, usando a letra "m" do teclado, para o mesmo
+como tivesse tomado algum tipo de dano. 
+</p>
+
+<h1 align="center">
+<img src="img/sleep-direita-esquerda.gif">
+</h1>
