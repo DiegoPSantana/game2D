@@ -1,4 +1,5 @@
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -16,6 +17,10 @@ public class Robo {
    private BufferedImage roboIdle[];
    private int idleAtual;
    private int timer;
+
+   private BufferedImage roboTired[];
+   private int tiredAtual;
+   private boolean tired;
 
    // Tamanho do Robo
    private int largura, altura;
@@ -49,6 +54,10 @@ public class Robo {
         jumpAtual = 0;
         pulando = false;
 
+        roboTired = new BufferedImage[10];
+        tiredAtual = 0;
+        tired = false;
+
         try{
             for(int i = 0; i < 8; i++){
                 String run = "sprites/Run (" + (i + 1) + ").png";
@@ -68,6 +77,13 @@ public class Robo {
                 String jump = "sprites/Jump (" + (i + 1) + ").png";
                 roboJump[i] = ImageIO.read(new File(jump));
                 System.out.println("Imagens Jump "+ jump + " carregadas !");
+            }
+
+            // Robo descansando
+            for(int i = 0; i < 10; i++){
+                String tiredString = "sprites/Dead ("+(i + 1)+").png";
+                roboTired[i]  = ImageIO.read(new File(tiredString));
+                System.out.println("Imagens Tired "+ tiredString + " carregadas !");
             }
         }catch (Exception e){
             System.out.println(" Error ao carregar imagens " + e);
@@ -100,6 +116,14 @@ public class Robo {
                 if(runAtual == 8 || idleAtual == 10){
                     runAtual = 0;
                     idleAtual = 0;
+                } else if(tired){
+                    if(timer >= 4){
+                        tiredAtual++;
+                        if(tiredAtual == 10){
+                            tiredAtual = 0;
+                            System.exit(0);
+                        }
+                    }
                 }
                 timer = 0;
             }
@@ -116,23 +140,31 @@ public class Robo {
     }
 
     public void pintar(Graphics2D g){
+
         // Para direita
-        if(ultimaDirecao == 1){
-            if(pulando){
-                g.drawImage(roboJump[jumpAtual], posX, posY, posX + largura, posY + altura,
-                        0, 0, roboJump[jumpAtual].getWidth(), roboJump[jumpAtual].getHeight(),
-                        null);
-            } else{
-                if(direcao == 1){
-                    g.drawImage(roboRun[runAtual], posX, posY, posX + largura, posY + altura,
-                            0, 0, roboRun[runAtual].getWidth(), roboRun[runAtual].getHeight(),
+        if(ultimaDirecao == 1) {
+                if (pulando) {
+                    g.drawImage(roboJump[jumpAtual], posX, posY, posX + largura, posY + altura,
+                            0, 0, roboJump[jumpAtual].getWidth(), roboJump[jumpAtual].getHeight(),
                             null);
-                } else{
-                    g.drawImage(roboIdle[idleAtual], posX, posY, posX + largura, posY + altura,
-                            0, 0, roboIdle[idleAtual].getWidth(),
-                            roboIdle[idleAtual].getHeight(), null);
+                } else {
+                    if (direcao == 1) {
+                        g.drawImage(roboRun[runAtual], posX, posY, posX + largura, posY + altura,
+                                0, 0, roboRun[runAtual].getWidth(), roboRun[runAtual].getHeight(),
+                                null);
+                    } else {
+                        if(tired){
+                            g.drawImage(roboTired[tiredAtual], posX, posY, posX + largura, posY + altura,
+                                    0, 0, roboTired[tiredAtual].getWidth(),
+                                    roboTired[tiredAtual].getHeight(), null);
+
+                        } else{
+                            g.drawImage(roboIdle[idleAtual], posX, posY, posX + largura, posY + altura,
+                                    0, 0, roboIdle[idleAtual].getWidth(),
+                                    roboIdle[idleAtual].getHeight(), null);
+                        }
+                    }
                 }
-            }
         }
 
         // Para esquerda
@@ -147,9 +179,15 @@ public class Robo {
                             roboRun[runAtual].getWidth(), 0, 0, roboRun[runAtual].getHeight(),
                             null);
                 } else{
-                    g.drawImage(roboIdle[idleAtual], posX, posY, posX + largura, posY + altura,
-                            roboIdle[idleAtual].getWidth(), 0, 0,
-                            roboIdle[idleAtual].getHeight(), null);
+                    if(tired){
+                        g.drawImage(roboTired[tiredAtual], posX, posY, posX + largura, posY + altura,
+                                 roboTired[tiredAtual].getWidth(),0, 0,
+                                roboTired[tiredAtual].getHeight(), null);
+                    } else{
+                        g.drawImage(roboIdle[idleAtual], posX, posY, posX + largura, posY + altura,
+                                roboIdle[idleAtual].getWidth(), 0, 0,
+                                roboIdle[idleAtual].getHeight(), null);
+                    }
                 }
             }
         }
@@ -172,5 +210,10 @@ public class Robo {
             pulando = true;
             timer = 0;
         }
+    }
+
+    public void setRoboTired(){
+        tired = true;
+        timer = 0;
     }
 }
